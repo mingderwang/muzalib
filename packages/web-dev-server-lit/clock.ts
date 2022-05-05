@@ -1,0 +1,25 @@
+import { ReactiveController, ReactiveControllerHost } from 'lit'
+
+export class ClockController implements ReactiveController {
+  private readonly host: ReactiveControllerHost
+  private interval = (0 as unknown) as ReturnType<typeof setTimeout>
+  date = new Date()
+
+  constructor(host: ReactiveControllerHost) {
+    this.host = host
+    host.addController(this)
+  }
+
+  hostConnected() {
+    this.interval = setInterval(() => this.tick(), 1000)
+  }
+
+  private tick() {
+    this.date = new Date()
+    this.host.requestUpdate()
+  }
+
+  hostDisconnected() {
+    clearInterval(this.interval)
+  }
+}

@@ -1,0 +1,63 @@
+{
+  "name": "@muzalib/wallet-core",
+  "description": "ethereum cross-chains wallet",
+  "version": "0.0.1",
+  "source": "src/main.ts",
+  "main": "dist/main.umd.js",
+  "module": "dist/main.modern.module.js",
+  "unpkg": "dist/main.umd.js",
+  "types": "dist/main.d.ts",
+  "keywords": [
+    "microbundle",
+    "typescript",
+    "ethereum"
+  ],
+  "files": [
+    "dist/**.js*",
+    "dist/**/*.ts"
+  ],
+  "scripts": {
+    "build": "microbundle --define PKG_VERSION=$npm_package_version",
+    "watch": "microbundle watch --define PKG_VERSION=$npm_package_version",
+    "test": "ava",
+    "lint": "xo src tests",
+    "format": "xo src tests --fix",
+    "prepack": "shx rm -rf dist && yarn build",
+    "release": "yarn prepack && source .env && np",
+    "clean": "shx rm -rf dist node_modules"
+  },
+  "devDependencies": {
+    "ava": "^3.15.0",
+    "esm": "^3.2.25",
+    "microbundle": "^0.14.2",
+    "np": "^7.6.0",
+    "xo": "^0.48.0"
+  },
+  "xo": {
+    "prettier": true,
+    "space": true,
+    "globals": [],
+    "rules": {}
+  },
+  "ava": {
+    "require": [
+      "esm"
+    ]
+  },
+  "license": "MIT",
+  "publishConfig": {
+    "registry": "https://registry.npmjs.org"
+  },
+  "directories": {
+    "test": "tests"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/mingderwang/muzalib/"
+  },
+  "author": "Ming-der Wang",
+  "bugs": {
+    "url": "https://github.com/mingderwang/muzalib/issues"
+  },
+  "homepage": "https://github.com/mingderwang/muzalib/packages/wallet-core#readme"
+}

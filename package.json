@@ -1,0 +1,15 @@
+{
+  "name": "muzalib",
+  "private": true,
+  "version": "0.0.3",
+  "author": "Ming-der Wang",
+  "license": "MIT",
+  "workspaces": {
+    "packages": [
+      "packages/*"
+    ]
+  },
+  "scripts": {
+    "clean": "rm -rf node_modules"
+  }
+}
